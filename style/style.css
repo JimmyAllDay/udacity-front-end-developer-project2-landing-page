@@ -1,0 +1,171 @@
+/* Remove default formatting and specify basic parameters */
+* {
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+  text-decoration: none;
+}
+body {
+  color: rgb(255, 255, 255);
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  text-align: center;
+}
+
+/*---------- Grid template areas -----------*/
+/* Mobile devices */
+@media only screen and (max-width: 760px) {
+  #content {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: minmax(100px, auto);
+    margin: 0 auto;
+    grid-gap: 10px;
+    grid-template-areas:
+      "header"
+      "nav"
+      "main"
+      "article"
+      "section"
+      "aside"
+      "footer";
+  }
+}
+/* Tablets */
+@media only screen and (min-width: 760px) {
+  #content {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: minmax(100px, auto);
+    max-width: 1000px;
+    margin: 0 auto;
+    grid-gap: 10px;
+    grid-template-areas:
+      "header header header header"
+      "nav nav nav nav"
+      "main main main main"
+      "article article article article"
+      "section section section section"
+      "aside aside aside aside"
+      "footer footer footer footer";
+  }
+}
+/* Laptops and desktops */
+@media only screen and (min-width: 1100px) {
+  #content {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-auto-rows: minmax(100px, auto);
+    max-width: 1300px;
+    margin: 0 auto;
+    grid-gap: 10px;
+    grid-template-areas:
+      "header header header header header header header header"
+      "nav nav nav nav nav nav nav nav"
+      "nav nav nav nav nav nav nav nav"
+      "aside main main main main section section section"
+      "aside main main main main section section section"
+      "aside main main main main section section section"
+      "aside main main main main . . ."
+      "article article article article article article article article"
+      "article article article article article article article article"
+      "article article article article article article article article"
+      "footer footer footer footer footer footer footer footer";
+  }
+}
+
+/* Grid area assignment */
+header {
+  grid-area: header;
+}
+nav {
+  grid-area: nav;
+  height: 50vh;
+}
+main {
+  grid-area: main;
+  height: 75vh;
+}
+article {
+  grid-area: article;
+  height: 75vh;
+}
+section {
+  grid-area: section;
+  height: 75vh;
+}
+aside {
+  grid-area: aside;
+}
+footer {
+  grid-area: footer;
+}
+
+/* Identify grid areas */
+#content > * {
+  background-color: cornflowerblue;
+  padding: 30px;
+}
+
+/* Other styling */
+
+.hide {
+  display: none;
+}
+
+#header-items {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+#logo {
+  width: 50%;
+  display: hide;
+  flex-direction: ;
+}
+#sign-in-links {
+  display: flex;
+  flex-direction: row-reverse;
+  width: 50%;
+}
+.nav-button {
+  margin-right: 5px;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  height: auto;
+  background-color: rgb(45, 49, 49);
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 70%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
