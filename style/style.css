@@ -61,14 +61,9 @@ body {
     grid-template-areas:
       "header header header header header header header header"
       "nav nav nav nav nav nav nav nav"
-      "nav nav nav nav nav nav nav nav"
-      "aside main main main main section section section"
-      "aside main main main main section section section"
-      "aside main main main main section section section"
-      "aside main main main main . . ."
-      "article article article article article article article article"
-      "article article article article article article article article"
-      "article article article article article article article article"
+      "main main main main main main aside aside"
+      "article article article article article article aside aside"
+      "section section section section section section aside aside"
       "footer footer footer footer footer footer footer footer";
   }
 }
@@ -79,7 +74,7 @@ header {
 }
 nav {
   grid-area: nav;
-  height: 50vh;
+  height: 25vh;
 }
 main {
   grid-area: main;
@@ -98,6 +93,7 @@ aside {
 }
 footer {
   grid-area: footer;
+  height: 25vh;
 }
 
 /* Identify grid areas */
@@ -106,32 +102,7 @@ footer {
   padding: 30px;
 }
 
-/* Other styling */
-
-.hide {
-  display: none;
-}
-
-#header-items {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-}
-#logo {
-  width: 50%;
-  display: hide;
-  flex-direction: ;
-}
-#sign-in-links {
-  display: flex;
-  flex-direction: row-reverse;
-  width: 50%;
-}
-.nav-button {
-  margin-right: 5px;
-}
-
-/* The Modal (background) */
+/*---------- Modal -----------*/
 .modal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
@@ -168,4 +139,28 @@ footer {
   color: black;
   text-decoration: none;
   cursor: pointer;
+}
+
+/*---------- Other Styling -----------*/
+.hide {
+  display: none;
+}
+
+#header-items {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+#logo {
+  width: 50%;
+  display: hide;
+  flex-direction: ;
+}
+#sign-in-links {
+  display: flex;
+  flex-direction: row-reverse;
+  width: 50%;
+}
+.nav-button {
+  margin-right: 5px;
 }

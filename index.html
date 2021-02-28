@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Grid Areas Boilerplate</title>
+    <title>Protocol Landing Page</title>
     <link rel="stylesheet" href="/style/style.css" />
   </head>
   <body>
@@ -18,46 +18,65 @@
             <button class="nav-button hide" id="log-out-button">Log Out</button>
           </div>
         </div>
-
-        <!-- mock authentication modal-->
       </header>
       <nav>
+        <!-- dynamic nav links -->
+        <div id="nav-layout-container">
+          <div id="welcome-message-container">
+            <h1 id="welcome-message"></h1>
+          </div>
+          <div id="dynamic-links-container"></div>
+        </div>
+        <!-- mock authentication modal-->
         <div class="modal" id="sign-in-modal">
           <div class="modal-content">
             <span class="close">&times;</span>
             <div>
               <h3>Please sign in</h3>
-              <h4>I am signing in as a:</h4>
+              <h4>I am a:</h4>
               <div class="sign-in-check-boxes">
                 <input
                   type="checkbox"
-                  id="patron-checkbox"
-                  name="patron-checkbox-selector"
+                  class="check"
+                  id="patron-check"
+                  name="log-in-id"
                   value="patron"
                 />
                 <label for="patron-checkbox"> Patron</label><br />
                 <input
                   type="checkbox"
-                  id="DJ-checkbox"
-                  name="DJ-checkbox-selector"
-                  value="DJ"
+                  class="check"
+                  id="dj-check"
+                  name="log-in-id"
+                  value="dj"
                 />
-                <label for="DJ-checkbox"> Patron</label><br />
+                <label for="dj-checkbox"> DJ</label><br />
                 <input
                   type="checkbox"
-                  id="venue-manager-checkbox"
-                  name="venue-manager-checkbox selector"
-                  value="Venue-manager"
+                  class="check"
+                  id="venue-manager-check"
+                  name="log-in-id"
+                  value="venue"
                 />
-                <label for="venue-manager-checkbox"> Patron</label><br />
+                <label for="venue-manager-checkbox"> Venue Manager</label><br />
+
+                <!-- Text input field and submit button -->
+
+                <input
+                  type="text"
+                  id="name-input-field"
+                  name="name-input-field"
+                  value=""
+                />
+                <button id="name-input-button" type="button">Sign In</button>
               </div>
             </div>
           </div>
         </div>
       </nav>
-      <main>Main</main>
-      <article>Article</article>
-      <section>Section</section>
+      <main id="main">Main</main>
+      <article id="article">Article</article>
+      <section id="section">Section</section>
       <aside>Aside</aside>
       <footer>Footer</footer>
     </div>
