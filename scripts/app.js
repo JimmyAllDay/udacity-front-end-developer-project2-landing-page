@@ -84,13 +84,11 @@ authLogOutButton.addEventListener("click", function() {
 
 // ---------------------Highlight Active Content --------
 
-//get element coordinates
-let article = document.querySelector("article");
-let main = document.querySelector("main");
-let section = document.querySelector("section");
+//get variables
+let sections = document.querySelectorAll(".highlight");
 let bounding = article.getBoundingClientRect();
 
-// check if element is in focus
+// check if element is in focus - ref: https://gomakethings.com/how-to-test-if-an-element-is-in-the-viewport-with-vanilla-javascript/
 let isInViewport = function(elem) {
   let bounding = elem.getBoundingClientRect();
   return (
@@ -100,27 +98,8 @@ let isInViewport = function(elem) {
   );
 };
 
-// Change styling when in focus
-// window.onscroll = function() {
-//   if (isInViewport(article)) {
-//     article.style.background = "blue";
-//   } else {
-//     article.style.background = "cornflowerblue";
-//   }
-//   if (isInViewport(main)) {
-//     main.style.background = "blue";
-//   } else {
-//     main.style.background = "cornflowerblue";
-//   }
-//   if (isInViewport(section)) {
-//     section.style.background = "blue";
-//   } else {
-//     section.style.background = "cornflowerblue";
-//   }
-// };
-
+// Change styling when in focus (you need to add .css classes to the relevant fields, then either add or remove them below)
 window.onscroll = function() {
-  let sections = document.querySelectorAll(".highlight");
   sections.forEach(section => {
     if (isInViewport(section)) {
       section.style.background = "blue";
