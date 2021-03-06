@@ -57,11 +57,11 @@ sign_in_button.addEventListener("click", function() {
 });
 
 // Limit checkbox selection - needs a reference
-var checks = document.querySelectorAll(".check");
-var max = 1;
-for (var i = 0; i < checks.length; i++) checks[i].onclick = selectiveCheck;
+let checks = document.querySelectorAll(".check");
+let max = 1;
+for (let i = 0; i < checks.length; i++) checks[i].onclick = selectiveCheck;
 function selectiveCheck(event) {
-  var checkedChecks = document.querySelectorAll(".check:checked");
+  let checkedChecks = document.querySelectorAll(".check:checked");
   if (checkedChecks.length >= max + 1) return false;
 }
 
@@ -84,28 +84,29 @@ authLogOutButton.addEventListener("click", function() {
 
 // ---------------------Highlight Active Content --------
 
-//get element coordinates
 let sectionRects = [...document.querySelectorAll(".highlight")].map(el =>
   el.getBoundingClientRect()
 );
 console.log(sectionRects);
+
+//get element coordinates
 let aside = document.querySelector("article");
 let bounding = aside.getBoundingClientRect();
 console.log(bounding);
 
 // check if element is in focus
-var isInViewport = function(elem) {
-  var bounding = elem.getBoundingClientRect();
+let isInViewport = function(elem) {
+  let bounding = elem.getBoundingClientRect();
   return (
-    bounding.top >= 50 &&
+    bounding.top >= 0 &&
     bounding.left >= 0 &&
     bounding.bottom <=
-      (window.innerHeight - 50 || document.documentElement.clientHeight) &&
+      (window.innerHeight || document.documentElement.clientHeight) &&
     bounding.right <=
       (window.innerWidth || document.documentElement.clientWidth)
   );
 };
-// Change styling on scroll
+// Change styling when in focus
 window.onscroll = function() {
   console.log(isInViewport(aside));
   if (isInViewport(aside)) {
@@ -141,7 +142,7 @@ sign_in_button.addEventListener("click", function() {
 
 // Add dynamic navigation links to nav and dynamic content to page
 function dynamicContent() {
-  if (sign_in_id == "patron") {
+  if (sign_in_id == "patron" && sign_in_name) {
     console.log("patronlog");
 
     // Dynamic links - patron
@@ -210,7 +211,7 @@ function dynamicContent() {
     </p>
     `;
     document.getElementById("section").appendChild(patron_content3);
-  } else if (sign_in_id == "dj") {
+  } else if (sign_in_id == "dj" && sign_in_name) {
     console.log("djlog");
     let dj_links = document.createElement("dj_links");
     dj_links.innerHTML = `
@@ -275,7 +276,7 @@ function dynamicContent() {
     </p>
     `;
     document.getElementById("section").appendChild(dj_content3);
-  } else if (sign_in_id == "venue") {
+  } else if (sign_in_id == "venue" && sign_in_name) {
     console.log("venuelog");
     let venue_links = document.createElement("venue_links");
     venue_links.innerHTML = `
