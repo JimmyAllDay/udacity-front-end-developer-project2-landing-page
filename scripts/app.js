@@ -77,21 +77,18 @@ sign_in_button.addEventListener("click", function() {
 // Mock sign-out - to be refactored with proper sign-out message, time permitting
 authLogOutButton.addEventListener("click", function() {
   location.reload();
-  alert("Click OK to sign out.");
+  alert("You are now signing out.");
 });
 
 // Add exception handling to authentication, time permitting
 
 // ---------------------Highlight Active Content --------
 
-let sectionRects = [...document.querySelectorAll(".highlight")].map(el =>
-  el.getBoundingClientRect()
-);
-console.log(sectionRects);
-
 //get element coordinates
-let aside = document.querySelector("article");
-let bounding = aside.getBoundingClientRect();
+let article = document.querySelector("article");
+let main = document.querySelector("main");
+let section = document.querySelector("section");
+let bounding = article.getBoundingClientRect();
 console.log(bounding);
 
 // check if element is in focus
@@ -107,12 +104,24 @@ let isInViewport = function(elem) {
   );
 };
 // Change styling when in focus
+
+// article section
 window.onscroll = function() {
-  console.log(isInViewport(aside));
-  if (isInViewport(aside)) {
-    aside.style.background = "blue";
+  console.log(isInViewport(article));
+  if (isInViewport(article)) {
+    article.style.background = "blue";
   } else {
-    aside.style.background = "cornflowerblue";
+    article.style.background = "cornflowerblue";
+  }
+  if (isInViewport(main)) {
+    main.style.background = "blue";
+  } else {
+    main.style.background = "cornflowerblue";
+  }
+  if (isInViewport(section)) {
+    section.style.background = "blue";
+  } else {
+    section.style.background = "cornflowerblue";
   }
 };
 
