@@ -82,7 +82,48 @@ authLogOutButton.addEventListener("click", function() {
 
 // Add exception handling to authentication, time permitting
 
-// ---------------------Dynamic Nav Content--------
+// ---------------------Highlight Active Content --------
+
+//get element coordinates
+let sectionRects = [...document.querySelectorAll(".highlight")].map(el =>
+  el.getBoundingClientRect()
+);
+console.log(sectionRects);
+let aside = document.querySelector("article");
+let bounding = aside.getBoundingClientRect();
+console.log(bounding);
+
+// check if element is in focus
+var isInViewport = function(elem) {
+  var bounding = elem.getBoundingClientRect();
+  return (
+    bounding.top >= 50 &&
+    bounding.left >= 0 &&
+    bounding.bottom <=
+      (window.innerHeight - 50 || document.documentElement.clientHeight) &&
+    bounding.right <=
+      (window.innerWidth || document.documentElement.clientWidth)
+  );
+};
+// Change styling on scroll
+window.onscroll = function() {
+  console.log(isInViewport(aside));
+  if (isInViewport(aside)) {
+    aside.style.background = "blue";
+  } else {
+    aside.style.background = "cornflowerblue";
+  }
+};
+
+// ---------------------Scrolling Behaviour --------
+
+// You will need to use the onscroll event handler for this: https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onscroll
+
+// Scrolling behaviour
+// You will probably want to use the scrollIntoView() method
+// https://webdesign.tutsplus.com/tutorials/smooth-scrolling-vanilla-javascript--cms-35165
+
+// ---------------------Dynamic Content--------
 
 // Add welcome message to nav
 sign_in_button.addEventListener("click", function() {
@@ -96,7 +137,7 @@ sign_in_button.addEventListener("click", function() {
   }
 });
 
-// Add additionall dynamic welcome message features, time permitting
+// Add additional dynamic welcome message features, time permitting
 
 // Add dynamic navigation links to nav and dynamic content to page
 function dynamicContent() {
@@ -119,17 +160,17 @@ function dynamicContent() {
     // Dynamic content - patron 1
     let patron_content1 = document.createElement("patron_content1");
     patron_content1.innerHTML = `
-    <h1>Lorem Ipsum</h1>
+    <h1>Discount Entry</h1>
     <p>
-      I cannot sleep, so I make this entry. But I must try to get a few hours'
-      sleep, as Van Helsing is to call for me at noon. He insists that I shall
-      go with him on another expedition. 27 September.--It was two o'clock
-      before we found a suitable opportunity for our attempt. The funeral held
-      at noon was all completed, and the last stragglers of the mourners had
-      taken themselves lazily away, when, looking carefully from behind a
-      clump of alder-trees, we saw the sexton lock the gate after him. We knew
-      then that we were safe till morning did we desire it; but the Professor
-      told me that we should not want more than an hour at most. 
+    I cannot sleep, so I make this entry. But I must try to get a few hours'
+    sleep, as Van Helsing is to call for me at noon. He insists that I shall
+    go with him on another expedition. 27 September.--It was two o'clock
+    before we found a suitable opportunity for our attempt. The funeral held
+    at noon was all completed, and the last stragglers of the mourners had
+    taken themselves lazily away, when, looking carefully from behind a
+    clump of alder-trees, we saw the sexton lock the gate after him. We knew
+    then that we were safe till morning did we desire it; but the Professor
+    told me that we should not want more than an hour at most. 
     </p>
       `;
     document.getElementById("main").appendChild(patron_content1);
@@ -137,7 +178,7 @@ function dynamicContent() {
     // Dynamic content - patron 2
     let patron_content2 = document.createElement("patron_content2");
     patron_content2.innerHTML = `
-    <h1>Lorem Ipsum</h1>
+    <h1>Protocol Blog</h1>
     <p>
     I cannot sleep, so I make this entry. But I must try to get a few hours'
     sleep, as Van Helsing is to call for me at noon. He insists that I shall
@@ -155,7 +196,7 @@ function dynamicContent() {
     // dynamic content - patron 3
     let patron_content3 = document.createElement("patron_content3");
     patron_content3.innerHTML = `
-    <h1>Lorem Ipsum</h1>
+    <h1>Protocol Mixes</h1>
     <p>
     I cannot sleep, so I make this entry. But I must try to get a few hours'
     sleep, as Van Helsing is to call for me at noon. He insists that I shall
@@ -184,7 +225,7 @@ function dynamicContent() {
     // Dynamic content - DJ 1
     let dj_content1 = document.createElement("dj_content1");
     dj_content1.innerHTML = `
-    <h1>Lorem Ipsum</h1>
+    <h1>Upload Demo Mix</h1>
     <p>
     I cannot sleep, so I make this entry. But I must try to get a few hours'
     sleep, as Van Helsing is to call for me at noon. He insists that I shall
@@ -202,7 +243,7 @@ function dynamicContent() {
     // Dynamic content - DJ 2
     let dj_content2 = document.createElement("dj_content2");
     dj_content2.innerHTML = `
-    <h1>Lorem Ipsum</h1>
+    <h1>Submit Your Availability</h1>
     <p>
     I cannot sleep, so I make this entry. But I must try to get a few hours'
     sleep, as Van Helsing is to call for me at noon. He insists that I shall
@@ -220,7 +261,7 @@ function dynamicContent() {
     // dynamic content - DJ 3
     let dj_content3 = document.createElement("dj_content3");
     dj_content3.innerHTML = `
-    <h1>Lorem Ipsum</h1>
+    <h1>Protocol Blog</h1>
     <p>
     I cannot sleep, so I make this entry. But I must try to get a few hours'
     sleep, as Van Helsing is to call for me at noon. He insists that I shall
@@ -249,55 +290,55 @@ function dynamicContent() {
     // Dynamic content - venue 1
     let venue_content1 = document.createElement("venue_content1");
     venue_content1.innerHTML = `
-        <h1>Lorem Ipsum</h1>
-        <p>
-        I cannot sleep, so I make this entry. But I must try to get a few hours'
-        sleep, as Van Helsing is to call for me at noon. He insists that I shall
-        go with him on another expedition. 27 September.--It was two o'clock
-        before we found a suitable opportunity for our attempt. The funeral held
-        at noon was all completed, and the last stragglers of the mourners had
-        taken themselves lazily away, when, looking carefully from behind a
-        clump of alder-trees, we saw the sexton lock the gate after him. We knew
-        then that we were safe till morning did we desire it; but the Professor
-        told me that we should not want more than an hour at most. 
-        </p>
-        `;
+    <h1>Work with Protocol</h1>
+    <p>
+    I cannot sleep, so I make this entry. But I must try to get a few hours'
+    sleep, as Van Helsing is to call for me at noon. He insists that I shall
+    go with him on another expedition. 27 September.--It was two o'clock
+    before we found a suitable opportunity for our attempt. The funeral held
+    at noon was all completed, and the last stragglers of the mourners had
+    taken themselves lazily away, when, looking carefully from behind a
+    clump of alder-trees, we saw the sexton lock the gate after him. We knew
+    then that we were safe till morning did we desire it; but the Professor
+    told me that we should not want more than an hour at most. 
+    </p>
+    `;
     document.getElementById("main").appendChild(venue_content1);
 
     // Dynamic content - venue 2
     let venue_content2 = document.createElement("venue_content2");
     venue_content2.innerHTML = `
-        <h1>Lorem Ipsum</h1>
-        <p>
-        I cannot sleep, so I make this entry. But I must try to get a few hours'
-        sleep, as Van Helsing is to call for me at noon. He insists that I shall
-        go with him on another expedition. 27 September.--It was two o'clock
-        before we found a suitable opportunity for our attempt. The funeral held
-        at noon was all completed, and the last stragglers of the mourners had
-        taken themselves lazily away, when, looking carefully from behind a
-        clump of alder-trees, we saw the sexton lock the gate after him. We knew
-        then that we were safe till morning did we desire it; but the Professor
-        told me that we should not want more than an hour at most. 
-        </p>
-        `;
+    <h1>Protocol Mixes</h1>
+    <p>
+    I cannot sleep, so I make this entry. But I must try to get a few hours'
+    sleep, as Van Helsing is to call for me at noon. He insists that I shall
+    go with him on another expedition. 27 September.--It was two o'clock
+    before we found a suitable opportunity for our attempt. The funeral held
+    at noon was all completed, and the last stragglers of the mourners had
+    taken themselves lazily away, when, looking carefully from behind a
+    clump of alder-trees, we saw the sexton lock the gate after him. We knew
+    then that we were safe till morning did we desire it; but the Professor
+    told me that we should not want more than an hour at most. 
+    </p>
+    `;
     document.getElementById("article").appendChild(venue_content2);
 
     // dynamic content - venue 3
     let venue_content3 = document.createElement("venue_content3");
     venue_content3.innerHTML = `
-        <h1>Lorem Ipsum</h1>
-        <p>
-        I cannot sleep, so I make this entry. But I must try to get a few hours'
-        sleep, as Van Helsing is to call for me at noon. He insists that I shall
-        go with him on another expedition. 27 September.--It was two o'clock
-        before we found a suitable opportunity for our attempt. The funeral held
-        at noon was all completed, and the last stragglers of the mourners had
-        taken themselves lazily away, when, looking carefully from behind a
-        clump of alder-trees, we saw the sexton lock the gate after him. We knew
-        then that we were safe till morning did we desire it; but the Professor
-        told me that we should not want more than an hour at most. 
-        </p>
-        `;
+    <h1>Our Strategy</h1>
+    <p>
+    I cannot sleep, so I make this entry. But I must try to get a few hours'
+    sleep, as Van Helsing is to call for me at noon. He insists that I shall
+    go with him on another expedition. 27 September.--It was two o'clock
+    before we found a suitable opportunity for our attempt. The funeral held
+    at noon was all completed, and the last stragglers of the mourners had
+    taken themselves lazily away, when, looking carefully from behind a
+    clump of alder-trees, we saw the sexton lock the gate after him. We knew
+    then that we were safe till morning did we desire it; but the Professor
+    told me that we should not want more than an hour at most. 
+    </p>
+    `;
     document.getElementById("section").appendChild(venue_content3);
   }
 }
