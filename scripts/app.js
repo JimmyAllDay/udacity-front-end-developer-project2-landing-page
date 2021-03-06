@@ -89,40 +89,45 @@ let article = document.querySelector("article");
 let main = document.querySelector("main");
 let section = document.querySelector("section");
 let bounding = article.getBoundingClientRect();
-console.log(bounding);
 
 // check if element is in focus
 let isInViewport = function(elem) {
   let bounding = elem.getBoundingClientRect();
   return (
     bounding.top >= 0 &&
-    bounding.left >= 0 &&
     bounding.bottom <=
-      (window.innerHeight || document.documentElement.clientHeight) &&
-    bounding.right <=
-      (window.innerWidth || document.documentElement.clientWidth)
+      (window.innerHeight || document.documentElement.clientHeight)
   );
 };
-// Change styling when in focus
 
-// article section
+// Change styling when in focus
+// window.onscroll = function() {
+//   if (isInViewport(article)) {
+//     article.style.background = "blue";
+//   } else {
+//     article.style.background = "cornflowerblue";
+//   }
+//   if (isInViewport(main)) {
+//     main.style.background = "blue";
+//   } else {
+//     main.style.background = "cornflowerblue";
+//   }
+//   if (isInViewport(section)) {
+//     section.style.background = "blue";
+//   } else {
+//     section.style.background = "cornflowerblue";
+//   }
+// };
+
 window.onscroll = function() {
-  console.log(isInViewport(article));
-  if (isInViewport(article)) {
-    article.style.background = "blue";
-  } else {
-    article.style.background = "cornflowerblue";
-  }
-  if (isInViewport(main)) {
-    main.style.background = "blue";
-  } else {
-    main.style.background = "cornflowerblue";
-  }
-  if (isInViewport(section)) {
-    section.style.background = "blue";
-  } else {
-    section.style.background = "cornflowerblue";
-  }
+  let sections = document.querySelectorAll(".highlight");
+  sections.forEach(section => {
+    if (isInViewport(section)) {
+      section.style.background = "blue";
+    } else {
+      section.style.background = "cornflowerblue";
+    }
+  });
 };
 
 // ---------------------Scrolling Behaviour --------
@@ -354,7 +359,6 @@ function dynamicContent() {
 }
 
 // Attach variable content function to sign in button
-
 sign_in_button.addEventListener("click", function() {
   dynamicContent();
 });
