@@ -1,10 +1,10 @@
-//----------------------Modal----------------------
+// ---------------------Modal-------------------------------------------
 
 // Variables
-let modal = document.getElementById("sign-in-modal");
-let authButton = document.getElementById("sign-in-button");
-let authLogOutButton = document.getElementById("log-out-button");
-let span = document.getElementsByClassName("close")[0];
+const modal = document.getElementById("sign-in-modal");
+const authButton = document.getElementById("sign-in-button");
+const authLogOutButton = document.getElementById("log-out-button");
+const span = document.getElementsByClassName("close")[0];
 
 // When the user clicks on the button, open the modal
 authButton.onclick = function() {
@@ -23,7 +23,7 @@ window.onclick = function(event) {
   }
 };
 
-// ---------------------Mock Authentication--------
+// ---------------------Mock Authentication-----------------------------
 
 // Variables
 const patron_checkbox = document.getElementById("patron-check");
@@ -80,15 +80,15 @@ authLogOutButton.addEventListener("click", function() {
   alert("You are now signing out.");
 });
 
-// Add exception handling to authentication, time permitting
+//TODO: Add exception handling to mock authentication
 
-// ---------------------Highlight Active Content --------
+// ---------------------Highlight Active Content -----------------------
 
 //get variables
 let sections = document.querySelectorAll(".highlight");
 let bounding = article.getBoundingClientRect();
 
-// check if element is in focus - ref: https://gomakethings.com/how-to-test-if-an-element-is-in-the-viewport-with-vanilla-javascript/
+// check if element is in focus - reference: https://gomakethings.com/how-to-test-if-an-element-is-in-the-viewport-with-vanilla-javascript/
 let isInViewport = function(elem) {
   let bounding = elem.getBoundingClientRect();
   return (
@@ -109,15 +109,72 @@ window.onscroll = function() {
   });
 };
 
-// ---------------------Scrolling Behaviour --------
+// ---------------------Scrolling Behaviour ----------------------------
+// TODO - Refactor this whole section
 
-// You will need to use the onscroll event handler for this: https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onscroll
+// create variables
+let links;
+let anchors;
+let linkLogic = false;
 
-// Scrolling behaviour
-// You will probably want to use the scrollIntoView() method
-// https://webdesign.tutsplus.com/tutorials/smooth-scrolling-vanilla-javascript--cms-35165
+// Update variables after sign in, change link logic state and call relevant functions
+sign_in_button.addEventListener("click", function() {
+  setTimeout(function() {
+    links = document.getElementsByClassName("smooth-scroll-links");
+    anchors = document.getElementsByClassName("smooth-scroll-anchors");
+    linkLogic = true;
+    preventJumpTo();
+    addScroll();
+  }, 1);
+});
 
-// ---------------------Dynamic Content--------
+// Convert html collections into arrays and prevent default link behaviour
+function preventJumpTo() {
+  if (linkLogic) {
+    links = [...links];
+    anchors = [...anchors];
+    links.forEach(link => {
+      link.addEventListener(
+        "click",
+        function(event) {
+          event.preventDefault();
+        },
+        false
+      );
+    });
+  }
+}
+
+// Add scrolling behaviour to links
+function addScroll() {
+  if (linkLogic) {
+    links[0].addEventListener("click", function() {
+      anchors[0].scrollIntoView({
+        behavior: "smooth"
+      });
+    });
+    links[1].addEventListener("click", function() {
+      anchors[1].scrollIntoView({
+        behavior: "smooth"
+      });
+    });
+    links[2].addEventListener("click", function() {
+      anchors[2].scrollIntoView({
+        behavior: "smooth"
+      });
+    });
+  }
+}
+
+// TODO: refactor the above into a loop function
+function addScroll2() {}
+if (linkLogic) {
+  links.forEach(link => {
+    link.addEventListener("click", function() {});
+  });
+}
+
+// ---------------------Dynamic Content---------------------------------
 
 // Add welcome message to nav
 sign_in_button.addEventListener("click", function() {
@@ -131,7 +188,7 @@ sign_in_button.addEventListener("click", function() {
   }
 });
 
-// Add additional dynamic welcome message features, time permitting
+// TODO: Add additional dynamic welcome message features, time permitting
 
 // Add dynamic navigation links to nav and dynamic content to page
 function dynamicContent() {
@@ -142,9 +199,9 @@ function dynamicContent() {
     let patron_links = document.createElement("patron_links");
     patron_links.innerHTML = `
         <div id="dynamic-links">
-        <a href="#main">Discount Entry</a><br />
-        <a href="#article">Protocol Blog</a><br />
-        <a href="#section">Protocol Mixes</a><br />
+        <a href="#main" class="smooth-scroll-links">Discount Entry</a><br />
+        <a href="#article" class="smooth-scroll-links">Protocol Blog</a><br />
+        <a href="#section" class="smooth-scroll-links">Protocol Mixes</a><br />
         </div>
     `;
     document
@@ -154,7 +211,7 @@ function dynamicContent() {
     // Dynamic content - patron 1
     let patron_content1 = document.createElement("patron_content1");
     patron_content1.innerHTML = `
-    <h1>Discount Entry</h1>
+    <h1 class="smooth-scroll-anchors">Discount Entry</h1>
     <p>
     I cannot sleep, so I make this entry. But I must try to get a few hours'
     sleep, as Van Helsing is to call for me at noon. He insists that I shall
@@ -172,7 +229,7 @@ function dynamicContent() {
     // Dynamic content - patron 2
     let patron_content2 = document.createElement("patron_content2");
     patron_content2.innerHTML = `
-    <h1>Protocol Blog</h1>
+    <h1 class="smooth-scroll-anchors">Protocol Blog</h1>
     <p>
     I cannot sleep, so I make this entry. But I must try to get a few hours'
     sleep, as Van Helsing is to call for me at noon. He insists that I shall
@@ -190,7 +247,7 @@ function dynamicContent() {
     // dynamic content - patron 3
     let patron_content3 = document.createElement("patron_content3");
     patron_content3.innerHTML = `
-    <h1>Protocol Mixes</h1>
+    <h1 class="smooth-scroll-anchors">Protocol Mixes</h1>
     <p>
     I cannot sleep, so I make this entry. But I must try to get a few hours'
     sleep, as Van Helsing is to call for me at noon. He insists that I shall
@@ -209,9 +266,9 @@ function dynamicContent() {
     let dj_links = document.createElement("dj_links");
     dj_links.innerHTML = `
         <div id="dynamic-links">
-        <a href="#main">Upload Demo Mix</a><br />
-        <a href="#article">Submit Your Availability</a><br />
-        <a href="#section">Protocol Blog</a><br />
+        <a href="#main" class="smooth-scroll-links">Upload Demo Mix</a><br />
+        <a href="#article" class="smooth-scroll-links">Submit Your Availability</a><br />
+        <a href="#section" class="smooth-scroll-links">Protocol Blog</a><br />
         </div>
     `;
     document.getElementById("dynamic-links-container").appendChild(dj_links);
@@ -219,7 +276,7 @@ function dynamicContent() {
     // Dynamic content - DJ 1
     let dj_content1 = document.createElement("dj_content1");
     dj_content1.innerHTML = `
-    <h1>Upload Demo Mix</h1>
+    <h1 class="smooth-scroll-anchors">Upload Demo Mix</h1>
     <p>
     I cannot sleep, so I make this entry. But I must try to get a few hours'
     sleep, as Van Helsing is to call for me at noon. He insists that I shall
@@ -237,7 +294,7 @@ function dynamicContent() {
     // Dynamic content - DJ 2
     let dj_content2 = document.createElement("dj_content2");
     dj_content2.innerHTML = `
-    <h1>Submit Your Availability</h1>
+    <h1 class="smooth-scroll-anchors">Submit Your Availability</h1>
     <p>
     I cannot sleep, so I make this entry. But I must try to get a few hours'
     sleep, as Van Helsing is to call for me at noon. He insists that I shall
@@ -255,7 +312,7 @@ function dynamicContent() {
     // dynamic content - DJ 3
     let dj_content3 = document.createElement("dj_content3");
     dj_content3.innerHTML = `
-    <h1>Protocol Blog</h1>
+    <h1 class="smooth-scroll-anchors">Protocol Blog</h1>
     <p>
     I cannot sleep, so I make this entry. But I must try to get a few hours'
     sleep, as Van Helsing is to call for me at noon. He insists that I shall
@@ -274,9 +331,9 @@ function dynamicContent() {
     let venue_links = document.createElement("venue_links");
     venue_links.innerHTML = `
         <div id="dynamic-links">
-        <a href="#main">Work with Protocol</a><br />
-        <a href="#article">Protocol Mixes</a><br />
-        <a href="#section">Our Strategy</a><br />
+        <a href="#main" class="smooth-scroll-links">Work with Protocol</a><br />
+        <a href="#article" class="smooth-scroll-links">Protocol Mixes</a><br />
+        <a href="#section" class="smooth-scroll-links">Our Strategy</a><br />
         </div>
     `;
     document.getElementById("dynamic-links-container").appendChild(venue_links);
@@ -284,7 +341,7 @@ function dynamicContent() {
     // Dynamic content - venue 1
     let venue_content1 = document.createElement("venue_content1");
     venue_content1.innerHTML = `
-    <h1>Work with Protocol</h1>
+    <h1 class="smooth-scroll-anchors">Work with Protocol</h1>
     <p>
     I cannot sleep, so I make this entry. But I must try to get a few hours'
     sleep, as Van Helsing is to call for me at noon. He insists that I shall
@@ -302,7 +359,7 @@ function dynamicContent() {
     // Dynamic content - venue 2
     let venue_content2 = document.createElement("venue_content2");
     venue_content2.innerHTML = `
-    <h1>Protocol Mixes</h1>
+    <h1 class="smooth-scroll-anchors">Protocol Mixes</h1>
     <p>
     I cannot sleep, so I make this entry. But I must try to get a few hours'
     sleep, as Van Helsing is to call for me at noon. He insists that I shall
@@ -320,7 +377,7 @@ function dynamicContent() {
     // dynamic content - venue 3
     let venue_content3 = document.createElement("venue_content3");
     venue_content3.innerHTML = `
-    <h1>Our Strategy</h1>
+    <h1 class="smooth-scroll-anchors">Our Strategy</h1>
     <p>
     I cannot sleep, so I make this entry. But I must try to get a few hours'
     sleep, as Van Helsing is to call for me at noon. He insists that I shall
