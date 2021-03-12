@@ -104,7 +104,7 @@ nav {
   transition: 0.5s;
 }
 #dynamic-links-container a:hover {
-  background-color: #ff6eff62;
+  background-color: #ff6eff44;
   color: #ff6eff;
 }
 .nav-margins {
@@ -133,6 +133,7 @@ summary {
   height: 50vh;
   display: flex;
   flex-direction: row-reverse;
+  margin-bottom: 30px;
 }
 #landing-content-header1-container {
   width: 50%;
@@ -141,7 +142,14 @@ summary {
 #landing-content-header1 {
   margin-bottom: 30px;
 }
-#landing-content1 {
+#landing-content1-image {
+  width: 50%;
+  height: 100%;
+}
+
+#landing-content1-image img {
+  width: 100%;
+  height: auto;
 }
 
 #details {
@@ -164,14 +172,20 @@ footer {
   height: 25vh;
   border-top: 2px solid lightgrey;
   margin-top: 50px;
+  display: flex;
 }
-/* #footer-content-container {
-  width: 75%;
+#footer-content-container {
+  width: 90%;
+  height: auto;
+  padding: 10px;
   margin: 0 auto;
+  display: flex;
+  flex-direction: row;
 }
 .footer-content-column {
-  height: 100px;
-} */
+  width: 33%;
+  height: 400px;
+}
 
 /* Identify grid areas */
 /* #content > * {
@@ -201,7 +215,7 @@ header {
   background-color: black;
   color: #ff6eff;
   border: #ff6eff solid 1px;
-  border-radius: 3px;
+  border-radius: 20px;
   width: 90px;
   margin-right: 50px;
   font-size: 12pt;
@@ -218,13 +232,13 @@ header {
   font-size: 12pt;
 }
 #sign-in-button:focus {
-  border: none;
+  outline: none;
 }
 #log-out-button {
   background-color: black;
   color: #ccff00;
   border: #ccff00 solid 1px;
-  border-radius: 3px;
+  border-radius: 20px;
   width: 90px;
   margin-right: 50px;
   font-size: 12pt;
@@ -239,6 +253,9 @@ header {
   margin-right: 50px;
   font-size: 12pt;
   transition: 0.5s;
+}
+#log-out-button:focus {
+  outline: none;
 }
 
 #header-items {
@@ -274,5 +291,5 @@ header {
 }
 
 .focushighlight {
-  text-shadow: 1px 1px #ff1dff65;
+  text-shadow: 1px 1px #ff1dff7c;
 }

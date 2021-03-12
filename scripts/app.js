@@ -1,6 +1,5 @@
 // ---------------------Header-------------------------------------------
 // TODO - add disapearing header on pause
-// TODO - refactor logic based on sign-in status. See variable 'Linklogic' and related functions.
 
 // ---------------------Sign-in alert---------------------------------
 
@@ -165,67 +164,34 @@ window.onscroll = function() {
 };
 
 // ---------------------Scrolling Behaviour ----------------------------
-// TODO - Refactor this whole section
 
 // create variables
 let links;
 let anchors;
 
-// Update variables after sign in, change link logic state and call relevant functions
+// Update variables on sign-in
 sign_in_button.addEventListener("click", function() {
+  links = document.getElementsByClassName("smooth-scroll-links");
+  anchors = document.getElementsByClassName("smooth-scroll-anchors");
+
+  // Convert htmlcollection
   setTimeout(function() {
-    links = document.getElementsByClassName("smooth-scroll-links");
-    anchors = document.getElementsByClassName("smooth-scroll-anchors");
-    preventJumpTo();
-    addScroll();
+    let arrayLinks = [...links];
+    let arrayAnchors = [...anchors];
+
+    // Prevent default behaviour and add smooth scroll
+    if (signedIn) {
+      for (let i = 0; i < arrayLinks.length; i++) {
+        arrayLinks[i].addEventListener("click", function(event) {
+          event.preventDefault();
+          arrayAnchors[i].scrollIntoView({
+            behavior: "smooth"
+          });
+        });
+      }
+    }
   }, 1);
 });
-
-// Convert html collections into arrays and prevent default link behaviour
-function preventJumpTo() {
-  if (signedIn) {
-    links = [...links];
-    anchors = [...anchors];
-    links.forEach(link => {
-      link.addEventListener(
-        "click",
-        function(event) {
-          event.preventDefault();
-        },
-        false
-      );
-    });
-  }
-}
-
-// Add scrolling behaviour to links
-function addScroll() {
-  if (signedIn) {
-    links[0].addEventListener("click", function() {
-      anchors[0].scrollIntoView({
-        behavior: "smooth"
-      });
-    });
-    links[1].addEventListener("click", function() {
-      anchors[1].scrollIntoView({
-        behavior: "smooth"
-      });
-    });
-    links[2].addEventListener("click", function() {
-      anchors[2].scrollIntoView({
-        behavior: "smooth"
-      });
-    });
-  }
-}
-
-// TODO: refactor the above into a loop function
-function addScroll2() {}
-if (signedIn) {
-  links.forEach(link => {
-    link.addEventListener("click", function() {});
-  });
-}
 
 // ---------------------Dynamic Content---------------------------------
 
@@ -281,7 +247,7 @@ function dynamicContent() {
               mattis aliquet. Etiam auctor id metus in varius. Aliquam rhoncus
               lobortis justo in congue. Duis ut iaculis mi. Vivamus et risus
               nisi. Suspendisse et sem justo.
-            </p>
+            </p><br><br>
       `;
     document.getElementById("main").appendChild(patron_content1);
 
@@ -305,7 +271,7 @@ function dynamicContent() {
               mattis aliquet. Etiam auctor id metus in varius. Aliquam rhoncus
               lobortis justo in congue. Duis ut iaculis mi. Vivamus et risus
               nisi. Suspendisse et sem justo.
-            </p>
+            </p><br><br>
     `;
     document.getElementById("article").appendChild(patron_content2);
 
@@ -329,7 +295,7 @@ function dynamicContent() {
               mattis aliquet. Etiam auctor id metus in varius. Aliquam rhoncus
               lobortis justo in congue. Duis ut iaculis mi. Vivamus et risus
               nisi. Suspendisse et sem justo.
-            </p>
+            </p><br><br>
     `;
     document.getElementById("section").appendChild(patron_content3);
   } else if (sign_in_id == "dj" && sign_in_name) {
@@ -364,7 +330,7 @@ function dynamicContent() {
               mattis aliquet. Etiam auctor id metus in varius. Aliquam rhoncus
               lobortis justo in congue. Duis ut iaculis mi. Vivamus et risus
               nisi. Suspendisse et sem justo.
-            </p>
+            </p><br><br>
     `;
     document.getElementById("main").appendChild(dj_content1);
 
@@ -388,7 +354,7 @@ function dynamicContent() {
               mattis aliquet. Etiam auctor id metus in varius. Aliquam rhoncus
               lobortis justo in congue. Duis ut iaculis mi. Vivamus et risus
               nisi. Suspendisse et sem justo.
-            </p>
+            </p><br><br>
     `;
     document.getElementById("article").appendChild(dj_content2);
 
@@ -412,7 +378,7 @@ function dynamicContent() {
               mattis aliquet. Etiam auctor id metus in varius. Aliquam rhoncus
               lobortis justo in congue. Duis ut iaculis mi. Vivamus et risus
               nisi. Suspendisse et sem justo.
-            </p>
+            </p><br><br>
     `;
     document.getElementById("section").appendChild(dj_content3);
   } else if (sign_in_id == "venue" && sign_in_name) {
@@ -447,7 +413,7 @@ function dynamicContent() {
               mattis aliquet. Etiam auctor id metus in varius. Aliquam rhoncus
               lobortis justo in congue. Duis ut iaculis mi. Vivamus et risus
               nisi. Suspendisse et sem justo.
-            </p>
+            </p><br><br>
     `;
     document.getElementById("main").appendChild(venue_content1);
 
@@ -471,7 +437,7 @@ function dynamicContent() {
               mattis aliquet. Etiam auctor id metus in varius. Aliquam rhoncus
               lobortis justo in congue. Duis ut iaculis mi. Vivamus et risus
               nisi. Suspendisse et sem justo.
-            </p>
+            </p><br><br>
     `;
     document.getElementById("article").appendChild(venue_content2);
 
@@ -495,7 +461,7 @@ function dynamicContent() {
               mattis aliquet. Etiam auctor id metus in varius. Aliquam rhoncus
               lobortis justo in congue. Duis ut iaculis mi. Vivamus et risus
               nisi. Suspendisse et sem justo.
-            </p>
+            </p><br><br>
     `;
     document.getElementById("section").appendChild(venue_content3);
   }
@@ -512,7 +478,6 @@ const navContainers = document.getElementsByClassName("nav-containers");
 
 function navYMargins() {
   if (signedIn == true) {
-    console.log(navContainers);
     for (let i = 0; i < navContainers.length; i++) {
       navContainers[i].classList.add("nav-margins");
     }
