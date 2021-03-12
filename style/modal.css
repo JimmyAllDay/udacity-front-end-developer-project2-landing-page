@@ -1,0 +1,174 @@
+/*------------ Alert modal --------------*/
+
+#alertModalContent {
+  width: 20%;
+  height: 20%;
+  font-size: 20px;
+  color: white;
+}
+#alertModalSpan {
+  text-align: right;
+}
+#alertModalText {
+  margin-top: 30px;
+}
+
+/*------------ Sign in modal --------------*/
+
+.modal {
+  color: white;
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+/* Modal Content Grid */
+.modal-content {
+  height: auto;
+  background-color: rgb(45, 49, 49);
+  margin: 15% auto;
+  padding: 5px;
+  border: 1px solid #888;
+  width: 50%;
+  height: auto;
+  border-radius: 10px;
+}
+#modal-content-grid-container {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("/images/jacob-morch-ZCQjX2_z4SM-unsplash.jpg");
+  background-size: cover;
+  display: grid;
+  grid-auto-rows: 60px;
+  max-width: 100%;
+  margin: 0 auto;
+  border-radius: 5px;
+  grid-gap: 10px;
+  grid-template-areas:
+    ". . . mc1"
+    "mc2 . . ."
+    "mc3 . . ."
+    "mc4 mc4 . ."
+    "mc5 mc5 mc5 mc5"
+    "mc6 mc6 mc6 mc6"
+    "mc7 mc7 mc7 mc7";
+}
+/* Identify grid areas  */
+/* #modal-content-grid-container > * {
+  background-color: cornflowerblue;
+} */
+
+/* The close button */
+#modal-content-1 {
+  display: flex;
+  flex-direction: row-reverse;
+  grid-area: mc1;
+}
+.close {
+  color: white;
+  font-size: 40px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+.close:hover,
+.close:focus {
+  color: #ff6eff;
+  text-decoration: none;
+  cursor: pointer;
+}
+#modal-content-2 {
+  grid-area: mc2;
+  font-size: 34pt;
+}
+#modal-content-3 {
+  grid-area: mc3;
+  display: flex;
+  font-size: 18pt;
+  color: #ffb46e;
+  flex-direction: row-reverse;
+  text-decoration: underline;
+}
+#sign-in-container {
+  padding-top: 20px;
+}
+#modal-content-4 {
+  grid-area: mc4;
+  display: flex;
+  flex-direction: row-reverse;
+}
+#i-am {
+  color: #ffb46e;
+  font-size: 18pt;
+  margin: 20px 90px auto auto;
+}
+
+/* TODO: create custom checkboxes / radio buttons */
+#modal-content-5 {
+  grid-area: mc5;
+}
+#check-center-container {
+  width: 50%;
+  margin: 20px auto auto auto;
+  display: flex;
+  color: #ffb46e;
+}
+.check-container {
+  font-size: 16pt;
+  margin: auto auto;
+}
+
+#modal-content-6 {
+  grid-area: mc6;
+}
+#name-input-field-container {
+  width: 50%;
+  height: 50%;
+  display: flex;
+  margin: 10px auto auto auto;
+}
+#name-input-field {
+  width: 99%;
+  height: 40px;
+  font-size: 14pt;
+  color: #888;
+  border: none;
+  border-radius: 20px;
+  padding: 0px 10px;
+}
+#name-input-field:focus {
+  outline: none;
+}
+#modal-content-7 {
+  grid-area: mc7;
+}
+
+#name-input-button {
+  background-color: transparent;
+  color: #ff6eff;
+  border: #ff6eff solid 1px;
+  border-radius: 20px;
+  width: 150px;
+  height: 40px;
+  font-size: 12pt;
+  transition: 0.5s;
+}
+
+#name-input-button:hover {
+  /* TODO - add opacity to background color */
+  background-color: #ff6eff4f;
+  color: #ff1dff;
+  border: #ff1dff solid 1px;
+  border-radius: 20px;
+  width: 150px;
+  height: 40px;
+  font-size: 12pt;
+}
+#name-input-button:focus {
+  outline: none;
+}

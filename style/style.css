@@ -1,12 +1,17 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&display=swap");
+@import "modal.css";
+@import "slideshow.css";
 /* Remove default formatting and specify basic parameters */
 * {
   margin: 0px;
   padding: 0px;
   list-style: none;
   text-decoration: none;
+  font-family: "Space Grotesk", sans-serif;
 }
 body {
-  color: rgb(255, 255, 255);
+  color: black;
+  background-color: white;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   text-align: center;
 }
@@ -21,12 +26,12 @@ body {
     margin: 0 auto;
     grid-gap: 10px;
     grid-template-areas:
-      "header"
+      "."
       "nav"
+      "aside"
       "main"
       "article"
       "section"
-      "aside"
       "footer";
   }
 }
@@ -40,12 +45,12 @@ body {
     margin: 0 auto;
     grid-gap: 10px;
     grid-template-areas:
-      "header header header header"
+      ". . . ."
       "nav nav nav nav"
+      "aside aside aside aside"
       "main main main main"
       "article article article article"
       "section section section section"
-      "aside aside aside aside"
       "footer footer footer footer";
   }
 }
@@ -54,96 +59,186 @@ body {
   #content {
     display: grid;
     grid-template-columns: repeat(8, 1fr);
-    grid-auto-rows: minmax(100px, auto);
+    grid-auto-rows: minmax(auto, auto);
     max-width: 1300px;
     margin: 0 auto;
     grid-gap: 10px;
     grid-template-areas:
-      "header header header header header header header header"
+      ". . . . . . . ."
       "nav nav nav nav nav nav nav nav"
-      "main main main main main main aside aside"
-      "article article article article article article aside aside"
-      "section section section section section section aside aside"
+      "aside aside aside aside aside aside aside aside"
+      ". . . main main . . ."
+      "summary summary summary summary summary summary summary summary"
+      ". . article article . . . ."
+      "details details details details details details details details"
+      ". . . . section section . ."
       "footer footer footer footer footer footer footer footer";
   }
 }
 
 /* Grid area assignment */
-header {
-  grid-area: header;
-}
+/* Note - header taken out of grid to facilitate sticky scroll behaviour*/
 nav {
   grid-area: nav;
-  height: 25vh;
 }
+#nav-layout-container {
+  max-height: auto;
+}
+#welcome-message-container {
+  font-size: 30pt;
+  text-align: left;
+  margin-left: 250px;
+  max-height: auto;
+}
+#dynamic-links-container {
+  display: inline-block;
+  text-align: center;
+}
+#dynamic-links-container a {
+  margin: 50px;
+  font-size: 20pt;
+  color: #ff6eff;
+  border: solid #ff6eff 3px;
+  padding: 10px;
+  border-radius: 40px;
+  transition: 0.5s;
+}
+#dynamic-links-container a:hover {
+  background-color: #ff6eff62;
+  color: #ff6eff;
+}
+.nav-margins {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
 main {
   grid-area: main;
-  height: 75vh;
+  height: auto;
 }
 article {
   grid-area: article;
-  height: 75vh;
+  height: auto;
 }
 section {
   grid-area: section;
-  height: 75vh;
+  height: auto;
 }
 aside {
   grid-area: aside;
+  height: auto;
 }
+summary {
+  grid-area: summary;
+  height: 50vh;
+  display: flex;
+  flex-direction: row-reverse;
+}
+#landing-content-header1-container {
+  width: 50%;
+  padding: 30px;
+}
+#landing-content-header1 {
+  margin-bottom: 30px;
+}
+#landing-content1 {
+}
+
+#details {
+  grid-area: details;
+  height: 50vh;
+  display: flex;
+  flex-direction: row;
+}
+
+.landing-content2-container {
+  width: 33%;
+  padding: 30px;
+}
+.landing-content2-header {
+  margin-bottom: 30px;
+}
+
 footer {
   grid-area: footer;
   height: 25vh;
+  border-top: 2px solid lightgrey;
+  margin-top: 50px;
 }
+/* #footer-content-container {
+  width: 75%;
+  margin: 0 auto;
+}
+.footer-content-column {
+  height: 100px;
+} */
 
 /* Identify grid areas */
-#content > * {
+/* #content > * {
   background-color: cornflowerblue;
   padding: 30px;
+} */
+
+/*------------ Header --------------*/
+
+header {
+  position: fixed;
+  color: white;
+  height: 65px;
+  width: 100%;
+  background-color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
 }
 
-/*---------- Modal -----------*/
-.modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0, 0, 0); /* Fallback color */
-  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+#logo {
+  width: 90%;
 }
 
-/* Modal Content/Box */
-.modal-content {
-  height: auto;
-  background-color: rgb(45, 49, 49);
-  margin: 15% auto; /* 15% from the top and centered */
-  padding: 20px;
-  border: 1px solid #888;
-  width: 70%; /* Could be more or less, depending on screen size */
+#sign-in-button {
+  background-color: black;
+  color: #ff6eff;
+  border: #ff6eff solid 1px;
+  border-radius: 3px;
+  width: 90px;
+  margin-right: 50px;
+  font-size: 12pt;
+  transition: 0.5s;
+}
+#sign-in-button:hover {
+  /* TODO - add opacity to background color */
+  background-color: #ff6eff48;
+  color: #ff6eff;
+  border: #ff1dff solid 1px;
+  border-radius: 20px;
+  width: 90px;
+  margin-right: 50px;
+  font-size: 12pt;
+}
+#sign-in-button:focus {
+  border: none;
+}
+#log-out-button {
+  background-color: black;
+  color: #ccff00;
+  border: #ccff00 solid 1px;
+  border-radius: 3px;
+  width: 90px;
+  margin-right: 50px;
+  font-size: 12pt;
 }
 
-/* The Close Button */
-.close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-/*---------- Other Styling -----------*/
-.hide {
-  display: none;
+#log-out-button:hover {
+  background-color: #ccff003d;
+  color: #ccff00;
+  border: #9dff00 solid 1px;
+  border-radius: 20px;
+  width: 90px;
+  margin-right: 50px;
+  font-size: 12pt;
+  transition: 0.5s;
 }
 
 #header-items {
@@ -163,4 +258,21 @@ footer {
 }
 .nav-button {
   margin-right: 5px;
+}
+
+.hide {
+  display: none;
+}
+
+/*---------- Other Styling -----------*/
+
+#main-logo {
+  color: black;
+  margin-top: 100px;
+  font-size: 60pt;
+  text-align: left;
+}
+
+.focushighlight {
+  text-shadow: 1px 1px #ff1dff65;
 }
