@@ -1,21 +1,23 @@
 // ---------------------Header-------------------------------------------
-// TODO - add disapearing header on pause
+// TODO - add disapearing header on scroll pause
 
 // ---------------------Sign-in alert---------------------------------
 
+// Get variables
 const alertModal = document.getElementById("alertModal");
 const alertSpan = document.getElementsByClassName("close")[0];
-let executed = false;
+let execute = false;
 let signedIn = false;
 
+// Display modal
 function displayAlertModal() {
   return (alertModal.style.display = "block");
 }
-
+// Trigger display modal on scroll
 document.addEventListener("scroll", function() {
   if (document.documentElement.scrollTop > 500) {
-    if (!executed && !signedIn) {
-      executed = true;
+    if (!execute && !signedIn) {
+      execute = true;
       displayAlertModal();
     }
   }
@@ -210,6 +212,7 @@ sign_in_button.addEventListener("click", function() {
 // TODO: Add additional dynamic welcome message features, time permitting
 
 // Add dynamic navigation links to nav and dynamic content to page
+// TODO: refactor - possibly remove this section to another js file
 function dynamicContent() {
   if (sign_in_id == "patron" && sign_in_name) {
     console.log("patronlog");
@@ -221,6 +224,7 @@ function dynamicContent() {
         <a href="#main" class="smooth-scroll-links">Discount Entry</a>
         <a href="#article" class="smooth-scroll-links">Protocol Blog</a>
         <a href="#section" class="smooth-scroll-links">Protocol Mixes</a>
+        <a href="#section" class="smooth-scroll-links">Another Link</a>
         </div>
     `;
     document
@@ -298,14 +302,39 @@ function dynamicContent() {
             </p><br><br>
     `;
     document.getElementById("section").appendChild(patron_content3);
+
+    // dynamic content - venue 4
+    let venue_content4 = document.createElement("venue_content4");
+    venue_content4.innerHTML = `
+            <h1 class="smooth-scroll-anchors">Another Link</h1><br><br>
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
+                      ullamcorper, orci et tincidunt ultricies, dui lorem mollis ligula,
+                      sed ornare urna ex a lacus. Aliquam erat volutpat. Curabitur
+                      volutpat leo sed ante rhoncus dictum. Vivamus consectetur quis
+                      purus a ornare. Morbi convallis lorem sed nisl tristique, et
+                      placerat dui tempor. Quisque dictum massa ac aliquam ultricies. In
+                      malesuada nibh ut velit porta cursus. Aenean eu faucibus urna. In
+                      ornare leo vitae accumsan egestas. Aliquam ut varius nulla. <br />
+                      <br />
+                      Sed egestas ligula id libero rhoncus tempus. Pellentesque aliquet
+                      urna ac velit cursus consequat. Nam a maximus neque. Quisque
+                      eleifend diam sit amet molestie porta. Mauris molestie tellus id
+                      mattis aliquet. Etiam auctor id metus in varius. Aliquam rhoncus
+                      lobortis justo in congue. Duis ut iaculis mi. Vivamus et risus
+                      nisi. Suspendisse et sem justo.
+                    </p><br><br>
+            `;
+    document.getElementById("section2").appendChild(venue_content4);
   } else if (sign_in_id == "dj" && sign_in_name) {
     console.log("djlog");
     let dj_links = document.createElement("dj_links");
     dj_links.innerHTML = `
         <div id="dynamic-links">
-        <a href="#main" class="smooth-scroll-links">Upload Demo Mix</a>
-        <a href="#article" class="smooth-scroll-links">Submit Your Availability</a>
+        <a href="#main" class="smooth-scroll-links">Upload Demo</a>
+        <a href="#article" class="smooth-scroll-links">Get Gigs</a>
         <a href="#section" class="smooth-scroll-links">Protocol Blog</a>
+        <a href="#section" class="smooth-scroll-links">Another Link</a>
         </div>
     `;
     document.getElementById("dynamic-links-container").appendChild(dj_links);
@@ -313,7 +342,7 @@ function dynamicContent() {
     // Dynamic content - DJ 1
     let dj_content1 = document.createElement("dj_content1");
     dj_content1.innerHTML = `
-    <h1 class="smooth-scroll-anchors">Upload Demo Mix</h1><br><br>
+    <h1 class="smooth-scroll-anchors">Upload Demo</h1><br><br>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
               ullamcorper, orci et tincidunt ultricies, dui lorem mollis ligula,
@@ -381,6 +410,29 @@ function dynamicContent() {
             </p><br><br>
     `;
     document.getElementById("section").appendChild(dj_content3);
+    // dynamic content - DJ 4
+    let venue_content4 = document.createElement("venue_content4");
+    venue_content4.innerHTML = `
+            <h1 class="smooth-scroll-anchors">Another Link</h1><br><br>
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
+                      ullamcorper, orci et tincidunt ultricies, dui lorem mollis ligula,
+                      sed ornare urna ex a lacus. Aliquam erat volutpat. Curabitur
+                      volutpat leo sed ante rhoncus dictum. Vivamus consectetur quis
+                      purus a ornare. Morbi convallis lorem sed nisl tristique, et
+                      placerat dui tempor. Quisque dictum massa ac aliquam ultricies. In
+                      malesuada nibh ut velit porta cursus. Aenean eu faucibus urna. In
+                      ornare leo vitae accumsan egestas. Aliquam ut varius nulla. <br />
+                      <br />
+                      Sed egestas ligula id libero rhoncus tempus. Pellentesque aliquet
+                      urna ac velit cursus consequat. Nam a maximus neque. Quisque
+                      eleifend diam sit amet molestie porta. Mauris molestie tellus id
+                      mattis aliquet. Etiam auctor id metus in varius. Aliquam rhoncus
+                      lobortis justo in congue. Duis ut iaculis mi. Vivamus et risus
+                      nisi. Suspendisse et sem justo.
+                    </p><br><br>
+            `;
+    document.getElementById("section2").appendChild(venue_content4);
   } else if (sign_in_id == "venue" && sign_in_name) {
     console.log("venuelog");
     let venue_links = document.createElement("venue_links");
@@ -389,6 +441,7 @@ function dynamicContent() {
         <a href="#main" class="smooth-scroll-links">Work with Protocol</a>
         <a href="#article" class="smooth-scroll-links">Protocol Mixes</a>
         <a href="#section" class="smooth-scroll-links">Our Strategy</a>
+        <a href="#section" class="smooth-scroll-links">Another Link</a>
         </div>
     `;
     document.getElementById("dynamic-links-container").appendChild(venue_links);
@@ -464,6 +517,30 @@ function dynamicContent() {
             </p><br><br>
     `;
     document.getElementById("section").appendChild(venue_content3);
+
+    // dynamic content - venue 4
+    let venue_content4 = document.createElement("venue_content4");
+    venue_content4.innerHTML = `
+        <h1 class="smooth-scroll-anchors">Another Link</h1><br><br>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
+                  ullamcorper, orci et tincidunt ultricies, dui lorem mollis ligula,
+                  sed ornare urna ex a lacus. Aliquam erat volutpat. Curabitur
+                  volutpat leo sed ante rhoncus dictum. Vivamus consectetur quis
+                  purus a ornare. Morbi convallis lorem sed nisl tristique, et
+                  placerat dui tempor. Quisque dictum massa ac aliquam ultricies. In
+                  malesuada nibh ut velit porta cursus. Aenean eu faucibus urna. In
+                  ornare leo vitae accumsan egestas. Aliquam ut varius nulla. <br />
+                  <br />
+                  Sed egestas ligula id libero rhoncus tempus. Pellentesque aliquet
+                  urna ac velit cursus consequat. Nam a maximus neque. Quisque
+                  eleifend diam sit amet molestie porta. Mauris molestie tellus id
+                  mattis aliquet. Etiam auctor id metus in varius. Aliquam rhoncus
+                  lobortis justo in congue. Duis ut iaculis mi. Vivamus et risus
+                  nisi. Suspendisse et sem justo.
+                </p><br><br>
+        `;
+    document.getElementById("section2").appendChild(venue_content4);
   }
 }
 
@@ -474,6 +551,7 @@ sign_in_button.addEventListener("click", function() {
 
 // -------------------------Styling-------------------------------------
 
+// Dynamic margins
 const navContainers = document.getElementsByClassName("nav-containers");
 
 function navYMargins() {

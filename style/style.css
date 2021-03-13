@@ -8,12 +8,14 @@
   list-style: none;
   text-decoration: none;
   font-family: "Space Grotesk", sans-serif;
+  border: red solid 1px;
 }
 body {
   color: black;
   background-color: white;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   text-align: center;
+  scroll-behavior: smooth;
 }
 
 /*---------- Grid template areas -----------*/
@@ -28,11 +30,236 @@ body {
     grid-template-areas:
       "."
       "nav"
-      "aside"
       "main"
       "article"
       "section"
       "footer";
+  }
+  /*------------ Header --------------*/
+  /* Note - header taken out of grid to facilitate sticky scroll behaviour*/
+
+  header {
+    position: fixed;
+    color: white;
+    height: 65px;
+    width: 100%;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+  }
+
+  #logo {
+    width: 50%;
+  }
+
+  #sign-in-button {
+    background-color: black;
+    color: #ff6eff;
+    border: #ff6eff solid 1px;
+    border-radius: 20px;
+    width: 90px;
+    margin-right: 50px;
+    font-size: 12pt;
+    transition: 0.5s;
+  }
+  #sign-in-button:hover {
+    /* TODO - add opacity to background color */
+    background-color: #ff6eff48;
+    color: #ff6eff;
+    border: #ff1dff solid 1px;
+    border-radius: 20px;
+    width: 90px;
+    margin-right: 50px;
+    font-size: 12pt;
+  }
+  #sign-in-button:focus {
+    outline: none;
+  }
+  #log-out-button {
+    background-color: black;
+    color: #ccff00;
+    border: #ccff00 solid 1px;
+    border-radius: 20px;
+    width: 90px;
+    margin-right: 50px;
+    font-size: 12pt;
+  }
+
+  #log-out-button:hover {
+    background-color: #ccff003d;
+    color: #ccff00;
+    border: #9dff00 solid 1px;
+    border-radius: 20px;
+    width: 90px;
+    margin-right: 50px;
+    font-size: 12pt;
+    transition: 0.5s;
+  }
+  #log-out-button:focus {
+    outline: none;
+  }
+
+  #header-items {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+  }
+  #logo {
+    width: 50%;
+    display: hide;
+    flex-direction: ;
+  }
+  #sign-in-links {
+    display: flex;
+    flex-direction: row-reverse;
+    width: 50%;
+  }
+  .nav-button {
+    margin-right: 5px;
+  }
+
+  .hide {
+    display: none;
+  }
+
+  nav {
+    grid-area: nav;
+  }
+  #nav-layout-container {
+    max-height: auto;
+  }
+  #welcome-message-container {
+    font-size: 30pt;
+    text-align: left;
+    margin-left: 250px;
+    max-height: auto;
+  }
+  #dynamic-links-container {
+    display: inline-block;
+    text-align: center;
+  }
+  #dynamic-links-container a {
+    margin: 50px;
+    font-size: 20pt;
+    color: #ff6eff;
+    border: solid #ff6eff 3px;
+    padding: 10px;
+    border-radius: 40px;
+    transition: 0.5s;
+  }
+  #dynamic-links-container a:hover {
+    background-color: #ff6eff44;
+    color: #ff6eff;
+  }
+  .nav-margins {
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+
+  main {
+    grid-area: main;
+    height: auto;
+  }
+  article {
+    grid-area: article;
+    height: auto;
+  }
+  section {
+    grid-area: section;
+    height: auto;
+  }
+  aside {
+    grid-area: aside;
+    height: auto;
+    display: none;
+  }
+  summary {
+    grid-area: summary;
+    height: 50vh;
+    display: flex;
+    flex-direction: row-reverse;
+    margin-bottom: 30px;
+  }
+  #landing-content-header1-container {
+    width: 100%;
+    display: flex;
+    flex-direction: row-reverse;
+  }
+  #landing-content-header1-container-inner {
+    width: 50%;
+    margin: 0 0 0 30px;
+  }
+  #landing-content-header1 {
+    margin-bottom: 30px;
+  }
+  #landing-content1-image {
+    width: 50%;
+    height: 100%;
+  }
+
+  #landing-content1-image img {
+    width: 100%;
+    height: auto;
+  }
+
+  #details {
+    grid-area: details;
+    height: 50vh;
+    display: flex;
+    flex-direction: row;
+  }
+
+  .landing-content2-container {
+    width: 33%;
+    padding: 30px;
+  }
+  .landing-content2-header {
+    margin-bottom: 30px;
+  }
+  #section2 {
+    grid-area: section2;
+  }
+
+  footer {
+    grid-area: footer;
+    height: 25vh;
+    border-top: 2px solid lightgrey;
+    margin-top: 50px;
+    display: flex;
+  }
+  #footer-content-container {
+    width: 90%;
+    height: auto;
+    padding: 10px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+  }
+  .footer-content-column {
+    width: 33%;
+    height: 400px;
+  }
+
+  /* Identify grid areas */
+  /* #content > * {
+  background-color: cornflowerblue;
+  padding: 30px;
+} */
+
+  /*---------- Other Styling -----------*/
+
+  #main-logo {
+    color: black;
+    margin-top: 100px;
+    font-size: 60pt;
+    text-align: left;
+  }
+
+  .focushighlight {
+    background-color: rgba(100, 148, 237, 0.459);
+    border-radius: 10px;
   }
 }
 /* Tablets */
@@ -72,224 +299,232 @@ body {
       ". . article article . . . ."
       "details details details details details details details details"
       ". . . . section section . ."
+      ". . section2 section2 . . . ."
       "footer footer footer footer footer footer footer footer";
   }
-}
+  /*------------ Header --------------*/
+  /* Note - header taken out of grid to facilitate sticky scroll behaviour*/
 
-/* Grid area assignment */
-/* Note - header taken out of grid to facilitate sticky scroll behaviour*/
-nav {
-  grid-area: nav;
-}
-#nav-layout-container {
-  max-height: auto;
-}
-#welcome-message-container {
-  font-size: 30pt;
-  text-align: left;
-  margin-left: 250px;
-  max-height: auto;
-}
-#dynamic-links-container {
-  display: inline-block;
-  text-align: center;
-}
-#dynamic-links-container a {
-  margin: 50px;
-  font-size: 20pt;
-  color: #ff6eff;
-  border: solid #ff6eff 3px;
-  padding: 10px;
-  border-radius: 40px;
-  transition: 0.5s;
-}
-#dynamic-links-container a:hover {
-  background-color: #ff6eff44;
-  color: #ff6eff;
-}
-.nav-margins {
-  margin-top: 50px;
-  margin-bottom: 50px;
-}
+  header {
+    position: fixed;
+    color: white;
+    height: 65px;
+    width: 100%;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+  }
 
-main {
-  grid-area: main;
-  height: auto;
-}
-article {
-  grid-area: article;
-  height: auto;
-}
-section {
-  grid-area: section;
-  height: auto;
-}
-aside {
-  grid-area: aside;
-  height: auto;
-}
-summary {
-  grid-area: summary;
-  height: 50vh;
-  display: flex;
-  flex-direction: row-reverse;
-  margin-bottom: 30px;
-}
-#landing-content-header1-container {
-  width: 50%;
-  padding: 30px;
-}
-#landing-content-header1 {
-  margin-bottom: 30px;
-}
-#landing-content1-image {
-  width: 50%;
-  height: 100%;
-}
+  #logo {
+    width: 90%;
+  }
 
-#landing-content1-image img {
-  width: 100%;
-  height: auto;
-}
+  #sign-in-button {
+    background-color: black;
+    color: #ff6eff;
+    border: #ff6eff solid 1px;
+    border-radius: 20px;
+    width: 90px;
+    margin-right: 50px;
+    font-size: 12pt;
+    transition: 0.5s;
+  }
+  #sign-in-button:hover {
+    /* TODO - add opacity to background color */
+    background-color: #ff6eff48;
+    color: #ff6eff;
+    border: #ff1dff solid 1px;
+    border-radius: 20px;
+    width: 90px;
+    margin-right: 50px;
+    font-size: 12pt;
+  }
+  #sign-in-button:focus {
+    outline: none;
+  }
+  #log-out-button {
+    background-color: black;
+    color: #ccff00;
+    border: #ccff00 solid 1px;
+    border-radius: 20px;
+    width: 90px;
+    margin-right: 50px;
+    font-size: 12pt;
+  }
 
-#details {
-  grid-area: details;
-  height: 50vh;
-  display: flex;
-  flex-direction: row;
-}
+  #log-out-button:hover {
+    background-color: #ccff003d;
+    color: #ccff00;
+    border: #9dff00 solid 1px;
+    border-radius: 20px;
+    width: 90px;
+    margin-right: 50px;
+    font-size: 12pt;
+    transition: 0.5s;
+  }
+  #log-out-button:focus {
+    outline: none;
+  }
 
-.landing-content2-container {
-  width: 33%;
-  padding: 30px;
-}
-.landing-content2-header {
-  margin-bottom: 30px;
-}
+  #header-items {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+  }
+  #logo {
+    width: 50%;
+    display: hide;
+    flex-direction: ;
+  }
+  #sign-in-links {
+    display: flex;
+    flex-direction: row-reverse;
+    width: 50%;
+  }
+  .nav-button {
+    margin-right: 5px;
+  }
 
-footer {
-  grid-area: footer;
-  height: 25vh;
-  border-top: 2px solid lightgrey;
-  margin-top: 50px;
-  display: flex;
-}
-#footer-content-container {
-  width: 90%;
-  height: auto;
-  padding: 10px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: row;
-}
-.footer-content-column {
-  width: 33%;
-  height: 400px;
-}
+  .hide {
+    display: none;
+  }
 
-/* Identify grid areas */
-/* #content > * {
+  nav {
+    grid-area: nav;
+  }
+  #nav-layout-container {
+    max-height: auto;
+  }
+  #welcome-message-container {
+    font-size: 30pt;
+    text-align: left;
+    margin-left: 250px;
+    max-height: auto;
+  }
+  #dynamic-links-container {
+    display: inline-block;
+    text-align: center;
+  }
+  #dynamic-links-container a {
+    margin: 50px;
+    font-size: 20pt;
+    color: #ff6eff;
+    border: solid #ff6eff 3px;
+    padding: 10px;
+    border-radius: 40px;
+    transition: 0.5s;
+  }
+  #dynamic-links-container a:hover {
+    background-color: #ff6eff44;
+    color: #ff6eff;
+  }
+  .nav-margins {
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+
+  main {
+    grid-area: main;
+    height: auto;
+  }
+  article {
+    grid-area: article;
+    height: auto;
+  }
+  section {
+    grid-area: section;
+    height: auto;
+  }
+  aside {
+    grid-area: aside;
+    height: auto;
+  }
+  summary {
+    grid-area: summary;
+    height: 50vh;
+    display: flex;
+    flex-direction: row-reverse;
+    margin-bottom: 30px;
+  }
+  #landing-content-header1-container {
+    width: 100%;
+    display: flex;
+    flex-direction: row-reverse;
+  }
+  #landing-content-header1-container-inner {
+    width: 50%;
+    margin: 0 0 0 30px;
+  }
+  #landing-content-header1 {
+    margin-bottom: 30px;
+  }
+  #landing-content1-image {
+    width: 50%;
+    height: 100%;
+  }
+
+  #landing-content1-image img {
+    width: 100%;
+    height: auto;
+  }
+
+  #details {
+    grid-area: details;
+    height: 50vh;
+    display: flex;
+    flex-direction: row;
+  }
+
+  .landing-content2-container {
+    width: 33%;
+    padding: 30px;
+  }
+  .landing-content2-header {
+    margin-bottom: 30px;
+  }
+  #section2 {
+    grid-area: section2;
+  }
+
+  footer {
+    grid-area: footer;
+    height: 25vh;
+    border-top: 2px solid lightgrey;
+    margin-top: 50px;
+    display: flex;
+  }
+  #footer-content-container {
+    width: 90%;
+    height: auto;
+    padding: 10px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+  }
+  .footer-content-column {
+    width: 33%;
+    height: 400px;
+  }
+
+  /* Identify grid areas */
+  /* #content > * {
   background-color: cornflowerblue;
   padding: 30px;
 } */
 
-/*------------ Header --------------*/
+  /*---------- Other Styling -----------*/
 
-header {
-  position: fixed;
-  color: white;
-  height: 65px;
-  width: 100%;
-  background-color: black;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 5;
-}
+  #main-logo {
+    color: black;
+    margin-top: 100px;
+    font-size: 60pt;
+    text-align: left;
+  }
 
-#logo {
-  width: 90%;
-}
-
-#sign-in-button {
-  background-color: black;
-  color: #ff6eff;
-  border: #ff6eff solid 1px;
-  border-radius: 20px;
-  width: 90px;
-  margin-right: 50px;
-  font-size: 12pt;
-  transition: 0.5s;
-}
-#sign-in-button:hover {
-  /* TODO - add opacity to background color */
-  background-color: #ff6eff48;
-  color: #ff6eff;
-  border: #ff1dff solid 1px;
-  border-radius: 20px;
-  width: 90px;
-  margin-right: 50px;
-  font-size: 12pt;
-}
-#sign-in-button:focus {
-  outline: none;
-}
-#log-out-button {
-  background-color: black;
-  color: #ccff00;
-  border: #ccff00 solid 1px;
-  border-radius: 20px;
-  width: 90px;
-  margin-right: 50px;
-  font-size: 12pt;
-}
-
-#log-out-button:hover {
-  background-color: #ccff003d;
-  color: #ccff00;
-  border: #9dff00 solid 1px;
-  border-radius: 20px;
-  width: 90px;
-  margin-right: 50px;
-  font-size: 12pt;
-  transition: 0.5s;
-}
-#log-out-button:focus {
-  outline: none;
-}
-
-#header-items {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-}
-#logo {
-  width: 50%;
-  display: hide;
-  flex-direction: ;
-}
-#sign-in-links {
-  display: flex;
-  flex-direction: row-reverse;
-  width: 50%;
-}
-.nav-button {
-  margin-right: 5px;
-}
-
-.hide {
-  display: none;
-}
-
-/*---------- Other Styling -----------*/
-
-#main-logo {
-  color: black;
-  margin-top: 100px;
-  font-size: 60pt;
-  text-align: left;
-}
-
-.focushighlight {
-  text-shadow: 1px 1px #ff1dff7c;
+  .focushighlight {
+    background-color: rgba(100, 148, 237, 0.459);
+    border-radius: 10px;
+  }
 }
